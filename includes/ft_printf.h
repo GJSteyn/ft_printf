@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/16 12:06:30 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/16 14:01:34 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ typedef enum			e_len
 	l,
 	ll,
 	j,
-	z,
-	t
+	z
 }						t_len;
 
 typedef struct			s_flags
