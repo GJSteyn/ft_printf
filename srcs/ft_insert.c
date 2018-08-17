@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_insert.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 14:06:30 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 10:18:30 by gsteyn           ###   ########.fr       */
+/*   Created: 2018/05/30 10:03:05 by gsteyn            #+#    #+#             */
+/*   Updated: 2018/08/17 08:04:28 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
-void	ft_putchar(char c)
+void		ft_insert(char **s, int index, long long c)
 {
-	write(1, &c, 1);
+	if (c < 0)
+	{
+		(*s)[0] = '-';
+		c *= -1;
+	}
+	if (c > 0)
+	{
+		(*s)[index - 1] = (c % 10) + 48;
+		c /= 10;
+		index--;
+		ft_insert(s, index, c);
+	}
 }

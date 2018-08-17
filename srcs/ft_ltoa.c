@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_ltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 14:06:30 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 10:18:30 by gsteyn           ###   ########.fr       */
+/*   Created: 2018/08/17 07:58:47 by gsteyn            #+#    #+#             */
+/*   Updated: 2018/08/17 10:37:24 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
-void	ft_putchar(char c)
+char			*ft_ltoa(long long c)
 {
-	write(1, &c, 1);
+	char	*ret;
+	int		len;
+
+	if (c < 0)
+	{
+		len = ft_intlen(-c);
+		len += 1;
+	}
+	else
+		len = ft_intlen(c);
+	ret = ft_strnew(len);
+	if (!ret)
+		return (NULL);
+	if (c == 0)
+	{
+		ret[0] = '0';
+		return (ret);
+	}
+	ft_insert(&ret, len, c);
+	return (ret);
 }

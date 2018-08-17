@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 14:06:30 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 10:18:30 by gsteyn           ###   ########.fr       */
+/*   Created: 2018/05/21 13:39:38 by gsteyn            #+#    #+#             */
+/*   Updated: 2018/08/17 12:12:01 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char c)
+void	ft_strdel(char **as)
 {
-	write(1, &c, 1);
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

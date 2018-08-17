@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 14:06:30 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 10:18:30 by gsteyn           ###   ########.fr       */
+/*   Created: 2018/05/21 13:37:54 by gsteyn            #+#    #+#             */
+/*   Updated: 2018/08/17 08:02:41 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
-void	ft_putchar(char c)
+char	*ft_strnew(size_t size)
 {
-	write(1, &c, 1);
+	size_t	i;
+	char	*ret;
+
+	i = 0;
+	ret = ft_memalloc(size + 1);
+	if (!ret)
+		return (NULL);
+	while (i < size)
+	{
+		ret[i++] = '\0';
+	}
+	return (ret);
 }

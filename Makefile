@@ -6,14 +6,18 @@
 #    By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/02 16:54:57 by gsteyn            #+#    #+#              #
-#    Updated: 2018/08/16 11:49:51 by gsteyn           ###   ########.fr        #
+#    Updated: 2018/08/17 14:18:22 by gsteyn           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		libftprintf.a
 SRC =		ft_printf.c ft_atoi.c ft_intlen.c ft_isdigit.c ft_numlen_base.c \
 			ft_putchar.c ft_putnbr_base.c ft_putnbr.c ft_putnstr.c ft_putstr.c \
-			ft_strchr.c ft_strclr.c ft_strlen.c
+			ft_strchr.c ft_strclr.c ft_strlen.c flags.c parse_flags.c \
+			parse_flags2.c ft_ltoa.c ft_strnew.c ft_itoa_base.c ft_memalloc.c \
+			ft_insert.c get_arg.c get_arg2.c ft_strdup.c ft_memcpy.c \
+			ft_strdel.c ft_strjoin.c ft_strfill.c format_int.c format_u_int.c \
+			ft_strsub.c format_string.c
 SRCS =		$(patsubst %.c, src/%.c, $(SRC))
 OBJS =		$(patsubst %.c, bin/%.o, $(SRC))
 SRCDIR =	srcs
@@ -23,10 +27,10 @@ INCLUDES =	-I includes
 
 all: $(NAME)
 
-$(NAME): $(OBJS) #srcs/main.c
+$(NAME): $(OBJS) test.c
 	ar rc $@ $^
 	ranlib $(NAME)
-	#make test
+	make test
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
@@ -41,4 +45,4 @@ fclean: clean
 re: fclean all
 
 test:
-	gcc srcs/main.c -L. ./libftprintf.a $(INCLUDES)
+	gcc test.c -L. ./libftprintf.a $(INCLUDES)

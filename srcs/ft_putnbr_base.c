@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:33:42 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/15 09:30:44 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/17 10:19:15 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void			ft_putnbr_base(intmax_t n, int base)
 	if (n >= (long long)base)
 	{
 		ft_putnbr_base(n / base, base);
-		ft_putchar(BASE[n % base]);
+		ft_putchar(BASE_L[n % base]);
 	}
 	else
-		ft_putchar(BASE[n % base]);
+		ft_putchar(BASE_L[n % base]);
 }

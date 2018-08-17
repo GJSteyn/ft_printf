@@ -6,108 +6,128 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/16 14:00:16 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/17 14:34:03 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
 
-void		init_flags(t_flags *flags)
+// void		format_char(t_flags *flags)
+// {
+// 	return ;
+// }
+
+static void		add_precision(t_flags *flags)
 {
-	flags->plus = 0;
-	flags->minus = 0;
-	flags->space = 0;
+	int			pr_len;
+	char		*pr;
+	char		*tmp;
+
+	pr_len = 0;
+	tmp = flags->out;
+	if ((size_t)flags->precision_len > ft_strlen(flags->out))
+		pr_len = flags->precision_len - ft_strlen(flags->out);
+	if (pr_len)
+	{
+		pr = ft_strnew(pr_len);
+		ft_strfill(pr, '0', pr_len);
+		flags->out = ft_strjoin(pr, tmp);
+		ft_strdel(&tmp);
+		ft_strdel(&pr);
+	}
+}
+
+static void		add_padding(t_flags *flags)
+{
+	int		pad_len;
+	char	*pad;
+	char	*tmp;
+	char	cp;
+
+	pad_len = 0;
+	tmp = flags->out;
+	cp = ' ';
+	if (flags->zero && !flags->precision)
+		cp = '0';
+	if ((size_t)flags->width > ft_strlen(flags->out))
+		pad_len = flags->width - ft_strlen(flags->out);
+	if (pad_len)
+	{
+		pad = ft_strnew(pad_len);
+		ft_strfill(pad, cp, pad_len);
+		if (!flags->minus)
+			flags->out = ft_strjoin(pad, tmp);
+		else
+			flags->out = ft_strjoin(tmp, pad);
+		ft_strdel(&tmp);
+		ft_strdel(&pad);
+	}
+}
+
+static void	add_prefix(t_flags *flags)
+{
+	char		*tmp;
+
+	tmp = flags->out;
+	if (flags->spec == 'x')
+		flags->out = ft_strjoin("0x", tmp);
+	else if (flags->spec == 'X')
+		flags->out = ft_strjoin("0X", tmp);
+	ft_strdel(&tmp);
 	flags->hash = 0;
-	flags->zero = 0;
-	flags->width = 0;
-	flags->precision = 0;
-	flags->precision_len = 0;
-	flags->len = normal;
-	flags->spec = 0;
 }
 
-int			is_valid(char c)
+void		format_hex(t_flags *flags)
 {
-	if (ft_strchr("-+ #0.sSpdDioOuUxXcC%hljz", c))
-		return (1);
-	else if (ft_isdigit(c))
-		return (1);
-	return (0);
+	if (flags->hash && !flags->precision && !flags->zero)
+		add_prefix(flags);
+	if (flags->precision)
+		add_precision(flags);
+	if (flags->hash && !flags->zero)
+		add_prefix(flags);
+	if (flags->width)
+		add_padding(flags);
+	if (flags->hash && flags->zero)
+		add_padding(flags);
 }
 
-void		get_flag(char c, t_flags *flags)
+void		format_arg(t_flags *flags)
 {
-	if (c == '+')
-		flags->plus = 1;
-	else if (c == '-')
-		flags->minus = 1;
-	else if (c == ' ')
-		flags->space = 1;
-	else if (c == '#')
-		flags->hash = 1;
-	else if (c == '0')
-		flags->zero = 1;
+	if (ft_strchr("cC", flags->spec))
+		// format_char(flags);
+		;
+	else if (ft_strchr("idD", flags->spec))
+		format_int(flags);
+	else if (ft_strchr("uU", flags->spec))
+		format_u_int(flags);
+	else if (ft_strchr("sS", flags->spec))
+		format_string(flags);
+	else if (ft_strchr("xX", flags->spec))
+		format_hex(flags);
+	else if (ft_strchr("oO", flags->spec))
+		// format_oct(flags);
+		;
+	else if (flags->spec == 'p')
+		// format_point(flags);
+		;
+	else if (flags->spec == '%')
+		// format_percent(flags);
+		;
 }
 
-void		get_width(char **fmt, t_flags *flags)
+int			print_arg(t_flags *flags, va_list ap)
 {
-	flags->width = ft_atoi(*fmt);
-	*fmt += ft_intlen(flags->width);
-}
-
-void		get_precision(char **fmt, t_flags *flags)
-{
-	(*fmt)++;
-	flags->precision = 1;
-	if (ft_isdigit(**fmt))
-	{
-		flags->precision_len = ft_atoi(*fmt);
-		*fmt += ft_intlen(flags->precision_len);
-	}
-}
-
-void		get_len(char **fmt, t_flags *flags)
-{
-	if (**fmt == 'h' && *((*fmt) + 1) == 'h')
-		flags->len = hh;
-	else if (**fmt == 'h')
-		flags->len = h;
-	else if (**fmt == 'l' && *((*fmt) + 1) == 'l')
-		flags->len = ll;
-	else if (**fmt == 'l')
-		flags->len = l;
-	else if (**fmt == 'j')
-		flags->len = j;
-	else if (**fmt == 'z')
-		flags->len = z;
-}
-
-void		get_flags(char **fmt, t_flags *flags)
-{
-	(*fmt)++;
-	while (is_valid(**fmt))
-	{
-		if (ft_strchr("sSpdDioOuUxXcC%", **fmt))
-		{
-			flags->spec = *((*fmt)++);
-			break ;
-		}
-		if (ft_strchr("-+ #0", **fmt))
-			get_flag(**fmt, flags);
-		else if (ft_isdigit(**fmt) && **fmt != '0')
-			get_width(fmt, flags);
-		else if (**fmt == '.')
-			get_precision(fmt, flags);
-		else if (ft_strchr("hljz", **fmt))
-			get_len(fmt, flags);
-	}
+	get_arg(flags, ap);
+	format_arg(flags);
+	ft_putstr(flags->out);
+	return (ft_strlen(flags->out));
 }
 
 int			ft_printf(const char *fmt, ...)
 {
 	int				ret;
-	va_list			args;
+	va_list			ap;
 	t_flags			flags;
 	char			*cpy;
 	char			*place;
@@ -115,7 +135,7 @@ int			ft_printf(const char *fmt, ...)
 	ret = 0;
 	cpy = (char*)fmt;
 	place = cpy;
-	va_start(args, fmt);
+	va_start(ap, fmt);
 	init_flags(&flags);
 	while (*cpy)
 	{
@@ -124,12 +144,14 @@ int			ft_printf(const char *fmt, ...)
 			ret += cpy - place;
 			ft_putnstr(place, cpy - place);
 			get_flags(&cpy, &flags);
-			ret += print_arg(flags);
-			init_flags(&flags);
+			ret += print_arg(&flags, ap);
+			reset_flags(&flags);
 			place = cpy;
 		}
-		cpy++;
+		if (*cpy)
+			cpy++;
 	}
-	va_end(args);
+	ft_putnstr(place, cpy - place);
+	va_end(ap);
 	return (0);
 }

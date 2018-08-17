@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 14:06:30 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 10:18:30 by gsteyn           ###   ########.fr       */
+/*   Created: 2018/05/21 13:06:04 by gsteyn            #+#    #+#             */
+/*   Updated: 2018/08/17 10:21:06 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char c)
+void	*ft_memalloc(size_t size)
 {
-	write(1, &c, 1);
+	void	*ret;
+	size_t	i;
+
+	i = 0;
+	ret = malloc(size);
+	if (ret)
+	{
+		while (i < size)
+			((char*)ret)[i++] = 0;
+		return (ret);
+	}
+	else
+	{
+		free(ret);
+		return (NULL);
+	}
 }

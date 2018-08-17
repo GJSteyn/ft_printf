@@ -6,11 +6,12 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:07:13 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/15 07:25:23 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/17 10:19:57 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
 void	ft_putstr(char const *s)
 {
