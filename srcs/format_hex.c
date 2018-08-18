@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_int.c                                       :+:      :+:    :+:   */
+/*   format_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 13:46:19 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 18:39:55 by gsteyn           ###   ########.fr       */
+/*   Created: 2018/08/18 16:46:39 by gsteyn            #+#    #+#             */
+/*   Updated: 2018/08/18 17:38:31 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void		add_padding(t_flags *flags)
 		cp = '0';
 	if ((size_t)flags->width > ft_strlen(flags->out))
 		pad_len = flags->width - ft_strlen(flags->out);
+	if (pad_len && flags->hash)
+		pad_len -= 2;
 	if (pad_len)
 	{
 		pad = ft_strnew(pad_len);
@@ -59,10 +61,29 @@ static void		add_padding(t_flags *flags)
 	}
 }
 
-void		format_int(t_flags *flags)
+static void	add_prefix(t_flags *flags)
 {
+	char		*tmp;
+
+	tmp = flags->out;
+	if (flags->spec == 'x')
+		flags->out = ft_strjoin("0x", tmp);
+	else if (flags->spec == 'X')
+		flags->out = ft_strjoin("0X", tmp);
+	ft_strdel(&tmp);
+	flags->hash = 0;
+}
+
+void		format_hex(t_flags *flags)
+{
+	if (flags->hash && !flags->precision && !flags->zero)
+		add_prefix(flags);
 	if (flags->precision)
 		add_precision(flags);
+	if (flags->hash/* && !flags->zero*/)
+		add_prefix(flags);
 	if (flags->width)
 		add_padding(flags);
+	if (flags->hash && flags->zero)
+		add_prefix(flags);
 }

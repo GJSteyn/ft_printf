@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:40:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 10:49:54 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 18:04:04 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		get_char(t_flags *flags, va_list ap)
 
 void		get_int(t_flags *flags, va_list ap)
 {
-	flags->arg = (int)va_arg(ap, int);
+	flags->arg = (long long)va_arg(ap, long long);
 	if (flags->len == normal)
 		flags->out = ft_ltoa((int)flags->arg);
 	else if (flags->len == hh)
@@ -82,5 +82,8 @@ void		get_string(t_flags *flags, va_list ap)
 	char		*tmp;
 
 	tmp = (char *)va_arg(ap, char *);
-	flags->out = ft_strdup(tmp);
+	if (tmp)
+		flags->out = ft_strdup(tmp);
+	else
+		flags->out = ft_strdup("(null)");
 }

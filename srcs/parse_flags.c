@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 07:51:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 14:13:39 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 18:25:48 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,8 @@ void		get_len(char **fmt, t_flags *flags)
 		flags->len = j;
 	else if (**fmt == 'z')
 		flags->len = z;
+	if (flags->len == hh || flags->len == ll)
+		*fmt += 2;
+	else
+		*fmt += 1;
 }

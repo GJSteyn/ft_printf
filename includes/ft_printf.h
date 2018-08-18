@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 14:18:12 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 17:51:53 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef enum			e_len
 	z
 }						t_len;
 
+typedef enum			e_sign
+{
+	none,
+	plus,
+	minus
+}						t_sign;
+
 typedef struct			s_flags
 {
 	int					plus;
@@ -42,6 +49,7 @@ typedef struct			s_flags
 	int					precision;
 	int					precision_len;
 	t_len				len;
+	t_sign				sign;
 	char				spec;
 	long long			arg;
 	char				*out;
@@ -72,6 +80,9 @@ void					get_percent(t_flags *flags);
 void					format_int(t_flags *flags);
 void					format_u_int(t_flags *flags);
 void					format_string(t_flags *flags);
+void					format_hex(t_flags *flags);
+void					format_oct(t_flags *flags);
+void					format_point(t_flags *flags);
 
 char					*ft_ltoa(long long c);
 char					*ft_strnew(size_t size);
