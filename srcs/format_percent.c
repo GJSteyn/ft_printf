@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_oct.c                                       :+:      :+:    :+:   */
+/*   format_percent.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/18 16:53:20 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:06:35 by gsteyn           ###   ########.fr       */
+/*   Created: 2018/08/18 19:08:50 by gsteyn            #+#    #+#             */
+/*   Updated: 2018/08/18 19:09:07 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,13 @@
 
 static void		add_precision(t_flags *flags)
 {
-	int			pr_len;
-	char		*pr;
 	char		*tmp;
 
-	pr_len = 0;
 	tmp = flags->out;
-	if ((size_t)flags->precision_len > ft_strlen(flags->out))
-		pr_len = flags->precision_len - ft_strlen(flags->out);
-	if (pr_len && flags->hash)
-		pr_len--;
-	if (pr_len)
+	if ((size_t)flags->precision_len < ft_strlen(flags->out))
 	{
-		pr = ft_strnew(pr_len);
-		ft_strfill(pr, '0', pr_len);
-		flags->out = ft_strjoin(pr, tmp);
+		flags->out = ft_strsub(flags->out, 0, flags->precision_len);
 		ft_strdel(&tmp);
-		ft_strdel(&pr);
 	}
 }
 
@@ -44,12 +34,10 @@ static void		add_padding(t_flags *flags)
 	pad_len = 0;
 	tmp = flags->out;
 	cp = ' ';
-	if (flags->zero && !flags->precision)
+	if (flags->zero && !flags->minus)
 		cp = '0';
 	if ((size_t)flags->width > ft_strlen(flags->out))
 		pad_len = flags->width - ft_strlen(flags->out);
-	if (pad_len && flags->hash)
-		pad_len -= 1;
 	if (pad_len)
 	{
 		pad = ft_strnew(pad_len);
@@ -63,27 +51,10 @@ static void		add_padding(t_flags *flags)
 	}
 }
 
-static void	add_prefix(t_flags *flags)
+void			format_percent(t_flags *flags)
 {
-	char		*tmp;
-
-	tmp = flags->out;
-	if (flags->spec == 'o')
-		flags->out = ft_strjoin("0", tmp);
-	ft_strdel(&tmp);
-	flags->hash = 0;
-}
-
-void		format_oct(t_flags *flags)
-{
-	if (flags->hash && !flags->precision && !flags->zero)
-		add_prefix(flags);
 	if (flags->precision)
 		add_precision(flags);
-	if (flags->hash/* && !flags->zero*/)
-		add_prefix(flags);
 	if (flags->width)
 		add_padding(flags);
-	if (flags->hash && flags->zero)
-		add_prefix(flags);
 }

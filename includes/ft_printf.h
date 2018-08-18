@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 17:51:53 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 19:10:42 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void					format_string(t_flags *flags);
 void					format_hex(t_flags *flags);
 void					format_oct(t_flags *flags);
 void					format_point(t_flags *flags);
+void					format_percent(t_flags *flags);
+void					format_char(t_flags *flags);
 
 char					*ft_ltoa(long long c);
 char					*ft_strnew(size_t size);
