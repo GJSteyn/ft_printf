@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 13:46:19 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 18:39:55 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 18:57:02 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,28 @@ static void		add_padding(t_flags *flags)
 	}
 }
 
-void		format_int(t_flags *flags)
+static void		add_sign(t_flags *flags)
+{
+	char		*tmp;
+
+	tmp = flags->out;
+	if (flags->sign == plus)
+	{
+		flags->out = ft_strjoin("+", tmp);
+		ft_strdel(&tmp);
+	}
+	else if (flags->sign == minus)
+	{
+		flags->out = ft_strjoin("-", tmp);
+		ft_strdel(&tmp);
+	}
+}
+
+void			format_int(t_flags *flags)
 {
 	if (flags->precision)
 		add_precision(flags);
+	add_sign(flags);
 	if (flags->width)
 		add_padding(flags);
 }

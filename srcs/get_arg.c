@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:40:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 18:04:04 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 18:46:27 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void		get_char(t_flags *flags, va_list ap)
 void		get_int(t_flags *flags, va_list ap)
 {
 	flags->arg = (long long)va_arg(ap, long long);
+	if ((int)flags->arg < 0)
+	{
+		flags->arg *= -1;
+		flags->sign = minus;
+	}
 	if (flags->len == normal)
 		flags->out = ft_ltoa((int)flags->arg);
 	else if (flags->len == hh)
