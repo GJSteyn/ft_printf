@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 13:46:19 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 18:57:02 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 19:55:38 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void		add_padding(t_flags *flags)
 		cp = '0';
 	if ((size_t)flags->width > ft_strlen(flags->out))
 		pad_len = flags->width - ft_strlen(flags->out);
+	if (pad_len && flags->sign)
+		pad_len--;
 	if (pad_len)
 	{
 		pad = ft_strnew(pad_len);
@@ -74,13 +76,21 @@ static void		add_sign(t_flags *flags)
 		flags->out = ft_strjoin("-", tmp);
 		ft_strdel(&tmp);
 	}
+	else if (flags->sign == space)
+	{
+		flags->out = ft_strjoin(" ", tmp);
+		ft_strdel(&tmp);
+	}
 }
 
 void			format_int(t_flags *flags)
 {
 	if (flags->precision)
 		add_precision(flags);
-	add_sign(flags);
+	if (!flags->zero)
+		add_sign(flags);
 	if (flags->width)
 		add_padding(flags);
+	if (flags->zero)
+		add_sign(flags);
 }

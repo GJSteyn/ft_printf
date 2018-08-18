@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:10:42 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 19:53:23 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef enum			e_sign
 {
 	none,
 	plus,
-	minus
+	minus,
+	space
 }						t_sign;
 
 typedef struct			s_flags

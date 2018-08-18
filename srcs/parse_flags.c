@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 07:51:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 18:59:53 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 19:54:58 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void		get_flag(char **fmt, t_flags *flags)
 		flags->zero = 1;
 	if (flags->plus)
 		flags->sign = plus;
+	else if (flags->space)
+		flags->sign = space;
 	(*fmt)++;
 }
 

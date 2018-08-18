@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:11:07 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 19:43:08 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void		format_arg(t_flags *flags)
 
 int			print_arg(t_flags *flags, va_list ap)
 {
-	get_arg(flags, ap);
+	if (flags->spec)
+		get_arg(flags, ap);
+	else
+		flags->out = ft_strnew(1);
 	format_arg(flags);
 	ft_putstr(flags->out);
 	return (ft_strlen(flags->out));
@@ -64,6 +67,7 @@ int			ft_printf(const char *fmt, ...)
 			ret += print_arg(&flags, ap);
 			reset_flags(&flags);
 			place = cpy;
+			continue ;
 		}
 		if (*cpy)
 			cpy++;

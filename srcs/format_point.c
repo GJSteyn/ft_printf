@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 17:06:43 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 17:07:01 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 20:00:39 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void		add_padding(t_flags *flags)
 		cp = '0';
 	if ((size_t)flags->width > ft_strlen(flags->out))
 		pad_len = flags->width - ft_strlen(flags->out);
-	if (pad_len)
+	if (pad_len && flags->hash)
 		pad_len -= 2;
 	if (pad_len)
 	{
@@ -73,14 +73,15 @@ static void	add_prefix(t_flags *flags)
 
 void		format_point(t_flags *flags)
 {
+	flags->hash = 1;
 	if (!flags->precision && !flags->zero)
 		add_prefix(flags);
-	if (flags->precision)
+	if (flags->hash && flags->precision)
 		add_precision(flags);
-	if (!flags->zero)
+	if (flags->hash/* && !flags->zero*/)
 		add_prefix(flags);
 	if (flags->width)
 		add_padding(flags);
-	if (flags->zero)
+	if (flags->hash && flags->zero)
 		add_prefix(flags);
 }
