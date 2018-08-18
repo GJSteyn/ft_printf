@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:43:08 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/18 20:07:09 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int			ft_printf(const char *fmt, ...)
 			cpy++;
 	}
 	reset_flags(&flags);
+	ret += cpy - place;
 	ft_putnstr(place, cpy - place);
 	va_end(ap);
-	return (0);
+	return (ret);
 }
