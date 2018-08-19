@@ -6,12 +6,14 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 20:07:09 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/19 13:50:42 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
+#include <wchar.h>
+#include <unistd.h>
 
 void		format_arg(t_flags *flags)
 {

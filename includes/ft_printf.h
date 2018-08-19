@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:53:23 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/19 13:52:44 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,7 @@ void					ft_strdel(char **as);
 char					*ft_strjoin(char const *s1, char const *s2);
 void					ft_strfill(char *str, char f, int n);
 char					*ft_strsub(char const *s, unsigned int start, size_t len);
+void					ft_putwchar(wchar_t wc);
+int						ft_wcharlen(wchar_t wc);
 
 #endif
