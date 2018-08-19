@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/19 13:52:44 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/19 14:25:59 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <inttypes.h>
 # include <stdarg.h>
+# include <wchar.h>
 
 typedef enum			e_len
 {
@@ -111,5 +112,7 @@ void					ft_strfill(char *str, char f, int n);
 char					*ft_strsub(char const *s, unsigned int start, size_t len);
 void					ft_putwchar(wchar_t wc);
 int						ft_wcharlen(wchar_t wc);
+size_t					ft_wstrlen(wchar_t *wstr);
+void					ft_putwstr(wchar_t *wstr);
 
 #endif

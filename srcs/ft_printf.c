@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/19 13:50:42 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/19 14:26:46 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int			ft_printf(const char *fmt, ...)
 	char			*cpy;
 	char			*place;
 
+	ft_putwstr(L"1234567漢rt");
 	ret = 0;
 	cpy = (char*)fmt;
 	place = cpy;
