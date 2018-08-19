@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:40:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 18:46:27 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/19 17:33:31 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 void		get_arg(t_flags *flags, va_list ap)
 {
-	if (ft_strchr("cC", flags->spec))
+	if (flags->spec == 'c')
 		get_char(flags, ap);
+	else if (flags->spec == 'C')
+		get_wchar(flags, ap);
 	else if (ft_strchr("idD", flags->spec))
 		get_int(flags, ap);
 	else if (ft_strchr("uU", flags->spec))
 		get_u_int(flags, ap);
-	else if (ft_strchr("sS", flags->spec))
+	else if (flags->spec == 's')
 		get_string(flags, ap);
+	else if (flags->spec == 'S')
+		get_wstring(flags, ap);
 	else if (ft_strchr("xX", flags->spec))
 		get_hex(flags, ap);
 	else if (ft_strchr("oO", flags->spec))

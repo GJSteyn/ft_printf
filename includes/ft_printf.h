@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/19 14:25:59 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/19 17:36:25 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void					get_hex(t_flags *flags, va_list ap);
 void					get_oct(t_flags *flags, va_list ap);
 void					get_point(t_flags *flags, va_list ap);
 void					get_percent(t_flags *flags);
+void					get_wchar(t_flags *flags, va_list ap);
+void					get_wstring(t_flags *flags, va_list ap);
 
 void					format_int(t_flags *flags);
 void					format_u_int(t_flags *flags);
@@ -92,7 +94,7 @@ char					*ft_ltoa(long long c);
 char					*ft_strnew(size_t size);
 void					ft_insert(char **s, int index, long long c);
 int						ft_atoi(const char *str);
-void					ft_putstr(const char *s);
+size_t					ft_putstr(const char *s);
 void					ft_putnstr(char *str, size_t n);
 char					*ft_strchr(const char *s, int c);
 void					ft_strclr(char *s);

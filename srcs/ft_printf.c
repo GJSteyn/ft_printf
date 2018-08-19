@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/19 14:26:46 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/19 17:38:21 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void		format_arg(t_flags *flags)
 {
-	if (ft_strchr("cC", flags->spec))
+	if (flags->spec == 'c')
 		 format_char(flags);
 	else if (ft_strchr("idD", flags->spec))
 		format_int(flags);
@@ -35,26 +35,36 @@ void		format_arg(t_flags *flags)
 		format_percent(flags);
 }
 
-int			print_arg(t_flags *flags, va_list ap)
+size_t		putwide(t_flags *flags)
 {
+
+}
+
+size_t			print_arg(t_flags *flags, va_list ap)
+{
+	size_t		ret;
+
+	ret = 0;
 	if (flags->spec)
 		get_arg(flags, ap);
 	else
 		flags->out = ft_strnew(1);
 	format_arg(flags);
-	ft_putstr(flags->out);
-	return (ft_strlen(flags->out));
+	if (ft_strchr("CS", flags->spec))
+		ret = putwide(flags);
+	else
+		ret = ft_putstr(flags->out);
+	return (ret);
 }
 
 int			ft_printf(const char *fmt, ...)
 {
-	int				ret;
+	size_t			ret;
 	va_list			ap;
 	t_flags			flags;
 	char			*cpy;
 	char			*place;
 
-	ft_putwstr(L"1234567漢rt");
 	ret = 0;
 	cpy = (char*)fmt;
 	place = cpy;

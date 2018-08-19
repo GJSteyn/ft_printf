@@ -6,7 +6,7 @@
 #    By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/02 16:54:57 by gsteyn            #+#    #+#              #
-#    Updated: 2018/08/19 14:26:19 by gsteyn           ###   ########.fr        #
+#    Updated: 2018/08/19 17:36:12 by gsteyn           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC =		ft_printf.c ft_atoi.c ft_intlen.c ft_isdigit.c ft_numlen_base.c \
 			ft_strdel.c ft_strjoin.c ft_strfill.c format_int.c format_u_int.c \
 			ft_strsub.c format_string.c format_hex.c format_oct.c \
 			format_point.c format_percent.c format_char.c ft_putwchar.c \
-			ft_wcharlen.c ft_wstrlen.c ft_putwstr.c
+			ft_wcharlen.c ft_wstrlen.c ft_putwstr.c get_arg3.c
 SRCS =		$(patsubst %.c, src/%.c, $(SRC))
 OBJS =		$(patsubst %.c, bin/%.o, $(SRC))
 SRCDIR =	srcs

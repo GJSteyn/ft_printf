@@ -6,11 +6,12 @@
 /*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:42:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 17:06:02 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/19 17:25:26 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <wchar.h>
 
 void		get_hex(t_flags *flags, va_list ap)
 {
@@ -65,4 +66,9 @@ void		get_percent(t_flags *flags)
 {
 	flags->out = ft_strnew(1);
 	flags->out[0] = '%';
+}
+
+void		get_wchar(t_flags *flags, va_list ap)
+{
+	flags->arg = (long long)va_arg(ap, wchar_t);
 }
