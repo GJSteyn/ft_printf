@@ -57,73 +57,119 @@ int			main(void)
 	int		*test;
 
 	test = &one;
-	one = printf("their[Hello %d%d%d%d%d%d%d%d%d %d] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
-	two = ft_printf("minee[Hello %d%d%d%d%d%d%d%d%d %d] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
-	printf("One: %d\n", one);
-	printf("Two: %d\n", two);
+	// one = printf("their[Hello %d%d%d%d%d%d%d%d%d %d] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
+	// two = ft_printf("minee[Hello %d%d%d%d%d%d%d%d%d %d] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
+	// printf("One: %d\n", one);
+	// printf("Two: %d\n", two);
 
-	printf("their[Hello %d%d%d%d%d%d%d%d%d %d] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
-	ft_printf("minee[Hello %d%d%d%d%d%d%d%d%d %d] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
-	printf("their[Hello %s %s %s] \n", "this is going to be one", "massive string, likke", "a huge one, a very long long long l ong one!");
-	ft_printf("minee[Hello %s %s %s] \n", "this is going to be one", "massive string, likke" ,"a huge one, a very long long long l ong one!");
-	printf("their[Hello %s %x HELLO] \n", "this is going", 56498);
-	ft_printf("minee[Hello %s %x HELLO] \n", "this is going", 56498);
+	// printf("their[Hello %d%d%d%d%d%d%d%d%d %d] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
+	// ft_printf("minee[Hello %d%d%d%d%d%d%d%d%d %d] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
+	// printf("their[Hello %s %s %s] \n", "this is going to be one", "massive string, likke", "a huge one, a very long long long l ong one!");
+	// ft_printf("minee[Hello %s %s %s] \n", "this is going to be one", "massive string, likke" ,"a huge one, a very long long long l ong one!");
+	// printf("their[Hello %s %jx HELLO] \n", "this is going", -4294967296);
+	// ft_printf("minee[Hello %s %jx HELLO] \n", "this is going", -4294967296);
 
-	printf("their[Hello %s %O %c %C HELLO] \n", "this is going", 56498, 'a', 'b');
-	ft_printf("minee[Hello %s %O %c %C HELLO] \n", "this is going", 56498, 'a', 'b');
+	// printf("their[Hello %s %O %c %C HELLO] \n", "this is going", 56498, 'a', 'b');
+	// ft_printf("minee[Hello %s %O %c %C HELLO] \n", "this is going", 56498, 'a', 'b');
 
 
-	printf("their [%-10d] \n", 10);
-	ft_printf("minee [%-10d] \n", 10);
+	// printf("their [%-10d] \n", 10);
+	// ft_printf("minee [%-10d] \n", 10);
 
-	printf("their[[% 23m] [%m] %20d% 1s] \n", -100, "hello");
-	ft_printf("minee[[% 23m] [%m] %20d% 1s] \n", -100, "hello");
-	printf("their[%20d  ] \n", -100);
-	ft_printf("minee[%20d  ] \n", -100);
-	printf("their[% 020d] \n", -100);
-	ft_printf("minee[% 020d] \n", -100);
-	printf("their[%020d] \n", 100);
-	ft_printf("minee[%020d] \n", 100);
-	printf("their[% 20d] \n", 100);
-	ft_printf("minee[% 20d] \n", 100);
-	printf("their[% 020-d] \n", 100);
-	ft_printf("minee[% 020-d] \n", 100);
-	printf("their[%20d] \n", 100);
-	ft_printf("minee[%20d] \n", 100);
-	printf("---------------------\n");
-	printf("their[%020s] \n", "-100");
-	ft_printf("minee[%020s] \n", "-100");
-	printf("their[% 20s] \n", "-100");
-	ft_printf("minee[% 20s] \n", "-100");
-	printf("their[% 020s] \n", "-100");
-	ft_printf("minee[% 020s] \n", "-100");
-	printf("their[%020s] \n", "100");
-	ft_printf("minee[%020s] \n", "100");
-	printf("their[% 20s] \n", "100");
-	ft_printf("minee[% 20s] \n", "100");
-	printf("their[% 020s] \n", "100");
-	ft_printf("minee[% 020s] \n", "100");
-	printf("their[%20s] \n", "100");
-	ft_printf("minee[%20s] \n", "100");
-	printf("their %#x \n", 10);
-	ft_printf("minee %#x \n", 10);
-	printf("their %#X \n", 10);
-	ft_printf("minee %#X \n", 10);
-	printf("their %#o \n", 10);
-	ft_printf("minee %#o \n", 10);
-	printf("their [%s]\n", NULL);
-	ft_printf("minee [%s]\n", NULL);
+	// printf("their[[% 23m] [%m] %20d% 1s] \n", -100, "hello");
+	// ft_printf("minee[[% 23m] [%m] %20d% 1s] \n", -100, "hello");
+	// printf("their[%20d  ] \n", -100);
+	// ft_printf("minee[%20d  ] \n", -100);
+	// printf("their[% 020d] \n", -100);
+	// ft_printf("minee[% 020d] \n", -100);
+	// printf("their[%020d] \n", 100);
+	// ft_printf("minee[%020d] \n", 100);
+	// printf("their[% 20d] \n", 100);
+	// ft_printf("minee[% 20d] \n", 100);
+	// printf("their[@moulitest: %#.o %#.0o]\n", 0, 0);
+	// ft_printf("minee[@moulitest: %#.o %#.0o]\n", 0, 0);
+	// printf("---------------------\n");
+	// printf("their[@moulitest: %.x %.0x]\n", 0, 0);
+	// ft_printf("minee[@moulitest: %.x %.0x]\n", 0, 0);
+	// printf("---------------------\n");
+	// printf("their[%#08x]\n", 42);
+	// ft_printf("minee[%#08x]\n", 42);
+	// printf("their[%#-08x]\n", 42);
+	// ft_printf("minee[%#-08x]\n", 42);
+	// printf("their[% 020-d] \n", 100);
+	// ft_printf("minee[% 020-d] \n", 100);
+	// printf("their[%20d] \n", 100);
+	// ft_printf("minee[%20d] \n", 100);
+	// printf("---------------------\n");
+	// printf("their[%020s] \n", "-100");
+	// ft_printf("minee[%020s] \n", "-100");
+	// printf("their[% 20s] \n", "-100");
+	// ft_printf("minee[% 20s] \n", "-100");
+	// printf("their[% 020s] \n", "-100");
+	// ft_printf("minee[% 020s] \n", "-100");
+	// printf("their[%020s] \n", "100");
+	// ft_printf("minee[%020s] \n", "100");
+	// printf("their[% 20s] \n", "100");
+	// ft_printf("minee[% 20s] \n", "100");
+	// printf("their[% 020s] \n", "100");
+	// ft_printf("minee[% 020s] \n", "100");
+	// printf("their[%20s] \n", "100");
+	// ft_printf("minee[%20s] \n", "100");
+	// printf("their %#x \n", 10);
+	// ft_printf("minee %#x \n", 10);
+	// printf("their %#X \n", 10);
+	// ft_printf("minee %#X \n", 10);
+	// printf("their %#o \n", 10);
+	// ft_printf("minee %#o \n", 10);
+	// printf("their [%s]\n", NULL);
+	// ft_printf("minee [%s]\n", NULL);
 
-	printf("%.5d\n", 5000);
-	ft_printf("%.5d\n", 5000);
-	int		i;
-	i = 5;
-	int		*t = &i;
-	printf("%20p\n", t);
-	ft_printf("%020p\n", t);
-	printf("---------------------\n");
-	printf("their[%020.5p] \n", t);
-	ft_printf("minee[%020.5p] \n", t);
+	// printf("%.5d\n", 5000);
+	// ft_printf("%.5d\n", 5000);
+	// int		i;
+	// i = 5;
+	// int		*t = &i;
+	// printf("%20p\n", t);
+	// ft_printf("%20p\n", t);
+	// printf("---------------------\n");
+	// printf("their[%020.5p] \n", t);
+	// ft_printf("minee[%020.5p] \n", t);
+
+	// printf("their[%jx]\n", -4294967296);
+	// ft_printf("minee[%jx]\n", -4294967296);
+
+	// printf("their[%jx]\n", -4294967297);
+	// ft_printf("minee[%jx]\n", -4294967297);
+
+	// printf("their[%d]\n", -2147483648);
+	// ft_printf("minee[%d]\n", -2147483648);
+
+	// printf("their[%d]\n", -2147483649);
+	// ft_printf("minee[%d]\n", -2147483649);
+
+	// printf("their[%+d]\n", 4242424242424242424242);
+	// ft_printf("minee[%+d]\n", 4242424242424242424242);
+
+	// printf("their[%hhd]\n", -128);
+	// ft_printf("minee[%hhd]\n", -128);
+
+	// printf("their[%hhd]\n", -129);
+	// ft_printf("minee[%hhd]\n", -129);
+
+	printf("their[%lld]\n", -9223372036854775808);
+	ft_printf("minee[%lld]\n", -9223372036854775808);
+
+	printf("their[%jd]\n", -9223372036854775808);
+	ft_printf("minee[%jd]\n", -9223372036854775808);
+
+	printf("their[%lu]\n", -42);
+	ft_printf("minee[%lu]\n", -42);
+
+	printf("their[%hU]\n", 4294967296);
+	ft_printf("minee[%hU]\n", 4294967296);
+
+	printf("their[%U]\n", 4294967296);
+	ft_printf("minee[%U]\n", 4294967296);
 
 	return (0);
 }

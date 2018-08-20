@@ -90,9 +90,9 @@ void					format_point(t_flags *flags);
 void					format_percent(t_flags *flags);
 void					format_char(t_flags *flags);
 
-char					*ft_ltoa(long long c);
+char					*ft_ltoa(intmax_t c);
 char					*ft_strnew(size_t size);
-void					ft_insert(char **s, int index, long long c);
+void					ft_insert(char **s, int index, intmax_t c);
 int						ft_atoi(const char *str);
 size_t					ft_putstr(const char *s);
 void					ft_putnstr(char *str, size_t n);
@@ -104,17 +104,18 @@ void					ft_putnbr_base(intmax_t n, int base);
 void					ft_putchar(char c);
 int						ft_isdigit(int c);
 int						ft_intlen(intmax_t c);
-char					*ft_itoa_base(long long n, int b, int up);
+char					*ft_itoa_base(uintmax_t n, int b, int up);
 void					*ft_memalloc(size_t size);
 char					*ft_strdup(const char *s1);
 void					*ft_memcpy(void *dest, const void *src, size_t n);
 void					ft_strdel(char **as);
 char					*ft_strjoin(char const *s1, char const *s2);
 void					ft_strfill(char *str, char f, int n);
-char					*ft_strsub(char const *s, unsigned int start, size_t len);
+char					*ft_strsub(char const *s, unsigned int st, size_t len);
 void					ft_putwchar(wchar_t wc);
 int						ft_wcharlen(wchar_t wc);
 size_t					ft_wstrlen(wchar_t *wstr);
 void					ft_putwstr(wchar_t *wstr);
+int						ft_numlen_base(intmax_t n, int base);
 
 #endif

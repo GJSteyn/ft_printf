@@ -44,7 +44,7 @@ static void		add_padding(t_flags *flags)
 	pad_len = 0;
 	tmp = flags->out;
 	cp = ' ';
-	if (flags->zero && !flags->precision)
+	if (flags->zero && !flags->precision && !flags->minus)
 		cp = '0';
 	if ((size_t)flags->width > ft_strlen(flags->out))
 		pad_len = flags->width - ft_strlen(flags->out);
@@ -76,6 +76,14 @@ static void	add_prefix(t_flags *flags)
 
 void		format_oct(t_flags *flags)
 {
+	if (flags->precision && !flags->precision_len && !flags->arg)
+	{
+		flags->out[0] = '\0';
+		if (flags->hash)
+			add_prefix(flags);
+		add_padding(flags);
+		return ;
+	}
 	if (flags->hash && !flags->precision && !flags->zero)
 		add_prefix(flags);
 	if (flags->precision)

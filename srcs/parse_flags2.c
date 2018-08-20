@@ -31,5 +31,4 @@ void		get_flags(char **fmt, t_flags *flags)
 		else if (ft_strchr("hljz", **fmt))
 			get_len(fmt, flags);
 	}
-	(*fmt)++;
 }

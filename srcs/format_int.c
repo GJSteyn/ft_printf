@@ -42,11 +42,11 @@ static void		add_padding(t_flags *flags)
 	pad_len = 0;
 	tmp = flags->out;
 	cp = ' ';
-	if (flags->zero && !flags->precision)
+	if (flags->zero && !flags->precision && !flags->minus)
 		cp = '0';
 	if ((size_t)flags->width > ft_strlen(flags->out))
 		pad_len = flags->width - ft_strlen(flags->out);
-	if (pad_len && flags->sign)
+	if (pad_len && flags->zero && flags->sign)
 		pad_len--;
 	if (pad_len)
 	{
@@ -81,10 +81,29 @@ static void		add_sign(t_flags *flags)
 		flags->out = ft_strjoin(" ", tmp);
 		ft_strdel(&tmp);
 	}
+	flags->sign = none;
+}
+
+static void		take_sign(t_flags *flags)
+{
+	char		*tmp;
+
+	tmp = flags->out;
+	flags->out = ft_strsub(tmp, 1, ft_strlen(tmp) - 1);
+	ft_strdel(&tmp);
+	flags->sign = minus;
 }
 
 void			format_int(t_flags *flags)
 {
+	if (flags->precision && !flags->precision_len && !flags->arg)
+	{
+		flags->out[0] = '\0';
+		add_padding(flags);
+		return ;
+	}
+	if (flags->out[0] == '-')
+		take_sign(flags);
 	if (flags->precision)
 		add_precision(flags);
 	if (!flags->zero)

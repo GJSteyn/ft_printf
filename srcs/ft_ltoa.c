@@ -12,18 +12,12 @@
 
 #include "ft_printf.h"
 
-char			*ft_ltoa(long long c)
+char			*ft_ltoa(intmax_t c)
 {
 	char	*ret;
 	int		len;
 
-	if (c < 0)
-	{
-		len = ft_intlen(-c);
-		len += 1;
-	}
-	else
-		len = ft_intlen(c);
+	len = ft_intlen(c);
 	ret = ft_strnew(len);
 	if (!ret)
 		return (NULL);

@@ -38,6 +38,8 @@ static void		add_padding(t_flags *flags)
 		cp = '0';
 	if ((size_t)flags->width > ft_strlen(flags->out))
 		pad_len = flags->width - ft_strlen(flags->out);
+	if (pad_len && !flags->arg)
+		pad_len--;
 	if (pad_len)
 	{
 		pad = ft_strnew(pad_len);

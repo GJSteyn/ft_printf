@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void		ft_insert(char **s, int index, long long c)
+void		ft_insert(char **s, int index, intmax_t c)
 {
 	if (c < 0)
 	{

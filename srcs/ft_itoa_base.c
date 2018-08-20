@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int		ft_baselen(long long n, int base)
+static int		ft_baselen(uintmax_t n, int base)
 {
 	int			ret;
 
@@ -27,7 +27,7 @@ static int		ft_baselen(long long n, int base)
 	return (ret);
 }
 
-static void		ft_insert_base(long long n, int b, int up, char *s)
+static void		ft_insert_base(uintmax_t n, int b, int up, char *s)
 {
 	int			ind;
 
@@ -43,7 +43,7 @@ static void		ft_insert_base(long long n, int b, int up, char *s)
 	}
 }
 
-char			*ft_itoa_base(long long n, int base, int upper)
+char			*ft_itoa_base(uintmax_t n, int base, int upper)
 {
 	int			len;
 	char		*ret;

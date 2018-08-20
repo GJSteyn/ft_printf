@@ -32,7 +32,7 @@ void		get_hex(t_flags *flags, va_list ap)
 	else if (flags->len == ll)
 		flags->out = ft_itoa_base((unsigned long long)flags->arg, 16, upper);
 	else if (flags->len == j)
-		flags->out = ft_itoa_base((intmax_t)flags->arg, 16, upper);
+		flags->out = ft_itoa_base((uintmax_t)flags->arg, 16, upper);
 	else if (flags->len == z)
 		flags->out = ft_itoa_base((size_t)flags->arg, 16, upper);
 }
@@ -51,7 +51,7 @@ void		get_oct(t_flags *flags, va_list ap)
 	else if (flags->len == ll)
 		flags->out = ft_itoa_base((unsigned long long)flags->arg, 8, 0);
 	else if (flags->len == j)
-		flags->out = ft_itoa_base((intmax_t)flags->arg, 8, 0);
+		flags->out = ft_itoa_base((uintmax_t)flags->arg, 8, 0);
 	else if (flags->len == z)
 		flags->out = ft_itoa_base((size_t)flags->arg, 8, 0);
 }

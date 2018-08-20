@@ -12,17 +12,17 @@
 
 #include "ft_printf.h"
 
-static void		add_precision(t_flags *flags)
-{
-	char		*tmp;
+// static void		add_precision(t_flags *flags)
+// {
+// 	char		*tmp;
 
-	tmp = flags->out;
-	if ((size_t)flags->precision_len < ft_strlen(flags->out))
-	{
-		flags->out = ft_strsub(flags->out, 0, flags->precision_len);
-		ft_strdel(&tmp);
-	}
-}
+// 	tmp = flags->out;
+// 	if ((size_t)flags->precision_len < ft_strlen(flags->out))
+// 	{
+// 		flags->out = ft_strsub(flags->out, 0, flags->precision_len);
+// 		ft_strdel(&tmp);
+// 	}
+// }
 
 static void		add_padding(t_flags *flags)
 {
@@ -53,8 +53,8 @@ static void		add_padding(t_flags *flags)
 
 void			format_percent(t_flags *flags)
 {
-	if (flags->precision)
-		add_precision(flags);
+	// if (flags->precision)
+	// 	add_precision(flags);
 	if (flags->width)
 		add_padding(flags);
 }

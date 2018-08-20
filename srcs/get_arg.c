@@ -46,11 +46,6 @@ void		get_char(t_flags *flags, va_list ap)
 void		get_int(t_flags *flags, va_list ap)
 {
 	flags->arg = (long long)va_arg(ap, long long);
-	if ((int)flags->arg < 0)
-	{
-		flags->arg *= -1;
-		flags->sign = minus;
-	}
 	if (flags->len == normal)
 		flags->out = ft_ltoa((int)flags->arg);
 	else if (flags->len == hh)
@@ -59,17 +54,25 @@ void		get_int(t_flags *flags, va_list ap)
 		flags->out = ft_ltoa((short)flags->arg);
 	else if (flags->len == l)
 		flags->out = ft_ltoa((long)flags->arg);
-	else if (flags->len == ll)
-		flags->out = ft_ltoa((long long)flags->arg);
-	else if (flags->len == j)
-		flags->out = ft_ltoa((intmax_t)flags->arg);
-	else if (flags->len == z)
-		flags->out = ft_ltoa((size_t)flags->arg);
+	else if (flags->len > l)
+	{
+		if (flags->arg < 0)
+		{
+			flags->arg *= -1;
+			flags->sign = minus;
+		}
+		if (flags->len == ll)
+			flags->out = ft_itoa_base((long long)flags->arg, 10, 0);
+		else if (flags->len == j)
+			flags->out = ft_itoa_base((intmax_t)flags->arg, 10, 0);
+		else if (flags->len == z)
+			flags->out = ft_itoa_base((size_t)flags->arg, 10, 0);
+	}
 }
 
 void		get_u_int(t_flags *flags, va_list ap)
 {
-	flags->arg = (unsigned int)va_arg(ap, unsigned int);
+	flags->arg = (unsigned long long)va_arg(ap, unsigned long long);
 	if (flags->len == normal)
 		flags->out = ft_ltoa((unsigned int)flags->arg);
 	else if (flags->len == hh)
@@ -77,11 +80,11 @@ void		get_u_int(t_flags *flags, va_list ap)
 	else if (flags->len == h)
 		flags->out = ft_ltoa((unsigned short)flags->arg);
 	else if (flags->len == l)
-		flags->out = ft_ltoa((unsigned long)flags->arg);
+		flags->out = ft_itoa_base((unsigned long)flags->arg, 10, 0);
 	else if (flags->len == ll)
 		flags->out = ft_ltoa((unsigned long long)flags->arg);
 	else if (flags->len == j)
-		flags->out = ft_ltoa((intmax_t)flags->arg);
+		flags->out = ft_ltoa((uintmax_t)flags->arg);
 	else if (flags->len == z)
 		flags->out = ft_ltoa((size_t)flags->arg);
 }
