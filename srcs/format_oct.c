@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_oct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 16:53:20 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:06:35 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 07:56:37 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ void		format_oct(t_flags *flags)
 		add_padding(flags);
 		return ;
 	}
-	if (flags->hash && !flags->precision && !flags->zero)
+	if (flags->arg && flags->hash && !flags->precision && !flags->zero)
 		add_prefix(flags);
 	if (flags->precision)
 		add_precision(flags);
-	if (flags->hash/* && !flags->zero*/)
+	if (flags->arg && flags->hash/* && !flags->zero*/)
 		add_prefix(flags);
 	if (flags->width)
 		add_padding(flags);
-	if (flags->hash && flags->zero)
+	if (flags->arg && flags->hash && flags->zero)
 		add_prefix(flags);
 }

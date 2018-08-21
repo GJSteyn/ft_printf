@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:40:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/19 17:33:31 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 07:51:05 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ void		get_int(t_flags *flags, va_list ap)
 		flags->out = ft_ltoa((char)flags->arg);
 	else if (flags->len == h)
 		flags->out = ft_ltoa((short)flags->arg);
-	else if (flags->len == l)
-		flags->out = ft_ltoa((long)flags->arg);
-	else if (flags->len > l)
+	else if (flags->len > h)
 	{
 		if (flags->arg < 0)
 		{
 			flags->arg *= -1;
 			flags->sign = minus;
 		}
-		if (flags->len == ll)
+		if (flags->len == l)
+			flags->out = ft_itoa_base((long)flags->arg, 10, 0);
+		else if (flags->len == ll)
 			flags->out = ft_itoa_base((long long)flags->arg, 10, 0);
 		else if (flags->len == j)
 			flags->out = ft_itoa_base((intmax_t)flags->arg, 10, 0);
@@ -82,11 +82,11 @@ void		get_u_int(t_flags *flags, va_list ap)
 	else if (flags->len == l)
 		flags->out = ft_itoa_base((unsigned long)flags->arg, 10, 0);
 	else if (flags->len == ll)
-		flags->out = ft_ltoa((unsigned long long)flags->arg);
+		flags->out = ft_itoa_base((unsigned long long)flags->arg, 10, 0);
 	else if (flags->len == j)
-		flags->out = ft_ltoa((uintmax_t)flags->arg);
+		flags->out = ft_itoa_base((uintmax_t)flags->arg, 10, 0);
 	else if (flags->len == z)
-		flags->out = ft_ltoa((size_t)flags->arg);
+		flags->out = ft_itoa_base((size_t)flags->arg, 10, 0);
 }
 
 void		get_string(t_flags *flags, va_list ap)

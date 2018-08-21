@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 19:09:58 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:11:31 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 07:07:18 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		add_padding(t_flags *flags)
 	pad_len = 0;
 	tmp = flags->out;
 	cp = ' ';
-	if (flags->zero && !flags->minus && !flags->precision)
+	if (flags->zero && !flags->minus/* && !flags->precision*/)
 		cp = '0';
 	if ((size_t)flags->width > ft_strlen(flags->out))
 		pad_len = flags->width - ft_strlen(flags->out);
@@ -55,6 +55,12 @@ static void		add_padding(t_flags *flags)
 
 void			format_char(t_flags *flags)
 {
+	if (flags->precision && !flags->precision_len && !flags->arg)
+	{
+		flags->out[0] = '\0';
+		add_padding(flags);
+		return ;
+	}
 	if (flags->precision)
 		add_precision(flags);
 	if (flags->width)

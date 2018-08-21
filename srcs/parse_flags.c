@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 07:51:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 05:50:21 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 08:02:38 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,14 @@ void		get_flag(char **fmt, t_flags *flags, va_list ap)
 	else if (**fmt == '0')
 		flags->zero = 1;
 	else if (**fmt == '*')
+	{
 		flags->width = va_arg(ap, int);
+		if (flags->width < 0)
+		{
+			flags->minus = 1;
+			flags->width *= -1;
+		}
+	}
 	if (flags->plus)
 		flags->sign = plus;
 	else if (flags->space)
@@ -60,6 +67,8 @@ void		get_precision(char **fmt, t_flags *flags, va_list ap)
 	else if (**fmt == '*')
 	{
 		flags->precision_len = va_arg(ap, int);
+		if (flags->precision_len < 0)
+			flags->precision = 0;
 		(*fmt)++;
 	}
 }

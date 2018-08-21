@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_point.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 17:06:43 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 20:00:39 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 07:47:06 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,20 @@ static void	add_prefix(t_flags *flags)
 
 void		format_point(t_flags *flags)
 {
+	if (flags->precision/* && !flags->precision_len*/ && !flags->arg)
+	{
+		flags->out[0] = '\0';
+		add_precision(flags);
+		add_prefix(flags);
+		add_padding(flags);
+		return ;
+	}
 	flags->hash = 1;
 	if (!flags->precision && !flags->zero)
 		add_prefix(flags);
 	if (flags->hash && flags->precision)
 		add_precision(flags);
-	if (flags->hash/* && !flags->zero*/)
+	if (flags->arg && flags->hash/* && !flags->zero*/)
 		add_prefix(flags);
 	if (flags->width)
 		add_padding(flags);

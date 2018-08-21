@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:23:43 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 05:55:50 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 08:02:07 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,68 @@ int			main(void)
 	printf("---------------------\n");
 	printf("their[%llu, %llu]\n", 0, ULLONG_MAX);
 	ft_printf("minee[%llu, %llu]\n", 0, ULLONG_MAX);
+	printf("---------------------\n");
+	printf("their[%.p, %.0p]\n", 0, 0);
+	ft_printf("minee[%.p, %.0p]\n", 0, 0);
+	printf("---------------------\n");
+	printf("their{%05.c}\n", 0);
+	ft_printf("minee{%05.c}\n", 0);
+	printf("---------------------\n");
+	printf("their{%05.s}\n", 0);
+	ft_printf("minee{%05.s}\n", 0);
+	printf("---------------------\n");
+	printf("their[%+C]\n", 0);
+	ft_printf("minee[%+C]\n", 0);
+	printf("---------------------\n");
+	printf("their[%ld]\n", LONG_MIN);
+	ft_printf("minee[%ld]\n", LONG_MIN);
+	// printf("---------------------\n");
+	// printf("their[%lc, %lc]\n", L'ÊM-^ZM-^V', L'ÿ≠');
+	// ft_printf("minee[%lc, %lc]\n", L'ÊM-^ZM-^V', L'ÿ≠');
+	// printf("---------------------\n");
+	// printf("their[%S]\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	// ft_printf("minee[%S]\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("---------------------\n");
+	printf("their[%.4S]\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	ft_printf("minee[%.4S]\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("---------------------\n");
+	printf("their{%-15Z}\n", 123);
+	ft_printf("minee{%-15Z}\n", 123);
+	printf("---------------------\n");
+	printf("their[%hhO, %hhO]\n", 0, USHRT_MAX);
+	ft_printf("minee[%hhO, %hhO]\n", 0, USHRT_MAX);
+	printf("---------------------\n");
+	printf("their{%f}{%F}\n", 1.42, 1.42);
+	ft_printf("minee{%f}{%F}\n", 1.42, 1.42);
+	printf("---------------------\n");
+	printf("their[%.u, %.0u]\n", 0, 0);
+	ft_printf("minee[%.u, %.0u]\n", 0, 0);
+	printf("---------------------\n");
+	printf("their[%]\n");
+	ft_printf("minee[%]\n");
+	printf("---------------------\n");
+	printf("their{%05p}\n", 0);
+	ft_printf("minee{%05p}\n", 0);
+	printf("---------------------\n");
+	printf("their[%.5p]\n", 0);
+	ft_printf("minee[%.5p]\n", 0);
+	printf("---------------------\n");
+	printf("their{%*d}\n", -5, 42);
+	ft_printf("minee{%*d}\n", -5, 42);
+	printf("---------------------\n");
+	printf("their[%#o]\n", 0);
+	ft_printf("minee[%#o]\n", 0);
+	printf("---------------------\n");
+	printf("their{%*c}\n", -15, 0);
+	ft_printf("minee{%*c}\n", -15, 0);
+	printf("---------------------\n");
+	printf("their{%.*d}\n", -5, 42);
+	ft_printf("minee{%.*d}\n", -5, 42);
+	printf("---------------------\n");
+	printf("their{%.*s}\n", -5, "42");
+	ft_printf("minee{%.*s}\n", -5, "42");
+	// printf(29854, 0x7fff929d6380);
+	// ft_printf(29854, 0x7fff929d6380);
 
 	return (0);
 }

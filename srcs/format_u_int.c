@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 13:57:37 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/17 14:10:56 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 07:34:57 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ static void		add_padding(t_flags *flags)
 
 void		format_u_int(t_flags *flags)
 {
+	if (flags->precision && !flags->precision_len && !flags->arg)
+	{
+		flags->out[0] = '\0';
+		add_padding(flags);
+		return ;
+	}
 	if (flags->precision)
 		add_precision(flags);
 	if (flags->width)
