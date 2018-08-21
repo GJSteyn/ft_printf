@@ -6,11 +6,12 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:23:43 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 05:34:47 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 05:55:50 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <limits.h>
 #include <stdio.h>
 
 // int				main(void)
@@ -176,6 +177,12 @@ int			main(void)
 	printf("---------------------\n");
 	printf("their[%-10S]\n", L"123©");
 	ft_printf("minee[%-10S]\n", L"123©");
+	printf("---------------------\n");
+	printf("their[%.*d]\n", 5, 2);
+	ft_printf("minee[%.*d]\n", 5, 2);
+	printf("---------------------\n");
+	printf("their[%llu, %llu]\n", 0, ULLONG_MAX);
+	ft_printf("minee[%llu, %llu]\n", 0, ULLONG_MAX);
 
 	return (0);
 }

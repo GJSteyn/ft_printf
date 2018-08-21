@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 07:53:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:27:02 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 05:52:31 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		get_flags(char **fmt, t_flags *flags)
+void		get_flags(char **fmt, t_flags *flags, va_list ap)
 {
 	(*fmt)++;
 	while (is_valid(**fmt))
@@ -22,12 +22,12 @@ void		get_flags(char **fmt, t_flags *flags)
 			flags->spec = *((*fmt)++);
 			return ;
 		}
-		if (ft_strchr("-+ #0", **fmt))
-			get_flag(fmt, flags);
+		if (ft_strchr("-+ #0*", **fmt))
+			get_flag(fmt, flags, ap);
 		else if (ft_isdigit(**fmt) && **fmt != '0')
 			get_width(fmt, flags);
 		else if (**fmt == '.')
-			get_precision(fmt, flags);
+			get_precision(fmt, flags, ap);
 		else if (ft_strchr("hljz", **fmt))
 			get_len(fmt, flags);
 	}

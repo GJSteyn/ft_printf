@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/20 17:18:26 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 05:47:36 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			ft_printf(const char *fmt, ...)
 		{
 			ret += cpy - place;
 			ft_putnstr(place, cpy - place);
-			get_flags(&cpy, &flags);
+			get_flags(&cpy, &flags, ap);
 			ret += print_arg(&flags, ap);
 			reset_flags(&flags);
 			place = cpy;

@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/20 17:13:48 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 05:51:53 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ void					init_flags(t_flags *flags);
 void					reset_flags(t_flags *flags);
 
 int						is_valid(char c);
-void					get_flag(char **fmt, t_flags *flags);
+void					get_flag(char **fmt, t_flags *flags, va_list ap);
 void					get_width(char **fmt, t_flags *flags);
-void					get_precision(char **fmt, t_flags *flags);
+void					get_precision(char **fmt, t_flags *flags, va_list ap);
 void					get_len(char **fmt, t_flags *flags);
-void					get_flags(char **fmt, t_flags *flags);
+void					get_flags(char **fmt, t_flags *flags, va_list ap);
 
 void					get_arg(t_flags *flags, va_list ap);
 void					get_char(t_flags *flags, va_list ap);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 07:51:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 19:54:58 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 05:50:21 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int			is_valid(char c)
 {
-	if (ft_strchr("-+ #0.sSpdDioOuUxXcC%hljz", c))
+	if (ft_strchr("-+ #0.*sSpdDioOuUxXcC%hljz", c))
 		return (1);
 	else if (ft_isdigit(c))
 		return (1);
 	return (0);
 }
 
-void		get_flag(char **fmt, t_flags *flags)
+void		get_flag(char **fmt, t_flags *flags, va_list ap)
 {
 	if (**fmt == '+')
 		flags->plus = 1;
@@ -33,6 +33,8 @@ void		get_flag(char **fmt, t_flags *flags)
 		flags->hash = 1;
 	else if (**fmt == '0')
 		flags->zero = 1;
+	else if (**fmt == '*')
+		flags->width = va_arg(ap, int);
 	if (flags->plus)
 		flags->sign = plus;
 	else if (flags->space)
@@ -46,7 +48,7 @@ void		get_width(char **fmt, t_flags *flags)
 	*fmt += ft_intlen(flags->width);
 }
 
-void		get_precision(char **fmt, t_flags *flags)
+void		get_precision(char **fmt, t_flags *flags, va_list ap)
 {
 	(*fmt)++;
 	flags->precision = 1;
@@ -54,6 +56,11 @@ void		get_precision(char **fmt, t_flags *flags)
 	{
 		flags->precision_len = ft_atoi(*fmt);
 		*fmt += ft_intlen(flags->precision_len);
+	}
+	else if (**fmt == '*')
+	{
+		flags->precision_len = va_arg(ap, int);
+		(*fmt)++;
 	}
 }
 
