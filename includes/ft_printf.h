@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 05:51:53 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 13:34:48 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct			s_flags
 	t_sign				sign;
 	char				spec;
 	long long			arg;
+	double				darg;
 	char				*out;
 }						t_flags;
 
@@ -80,6 +81,7 @@ void					get_point(t_flags *flags, va_list ap);
 void					get_percent(t_flags *flags);
 void					get_wchar(t_flags *flags, va_list ap);
 void					get_wstring(t_flags *flags, va_list ap);
+void					get_float(t_flags *flags, va_list ap);
 
 void					normalize_arg(t_flags *flags);
 
@@ -93,6 +95,7 @@ void					format_point(t_flags *flags);
 void					format_percent(t_flags *flags);
 void					format_char(t_flags *flags);
 void					format_empty(t_flags *flags);
+void					format_float(t_flags *flags);
 
 char					*wchar_to_str(t_flags *flags);
 char					*wstr_to_str(t_flags *flags);
@@ -124,5 +127,6 @@ int						ft_wcharlen(wchar_t wc);
 size_t					ft_wstrlen(wchar_t *wstr);
 void					ft_putwstr(wchar_t *wstr);
 int						ft_numlen_base(intmax_t n, int base);
+char					*ft_ftoa(double f);
 
 #endif

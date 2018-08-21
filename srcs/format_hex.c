@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 16:46:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 17:38:31 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 09:19:35 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void		add_padding(t_flags *flags)
 	}
 }
 
-static void	add_prefix(t_flags *flags)
+static void		add_prefix(t_flags *flags)
 {
 	char		*tmp;
 
@@ -74,7 +74,7 @@ static void	add_prefix(t_flags *flags)
 	flags->hash = 0;
 }
 
-void		format_hex(t_flags *flags)
+void			format_hex(t_flags *flags)
 {
 	if (flags->hash && !flags->precision && !flags->zero && flags->arg)
 		add_prefix(flags);

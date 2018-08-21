@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:40:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 07:51:05 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 10:18:31 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void		get_arg(t_flags *flags, va_list ap)
 		get_u_int(flags, ap);
 	else if (flags->spec == 's')
 		get_string(flags, ap);
+	else if (ft_strchr("fF", flags->spec))
+		get_float(flags, ap);
 	else if (flags->spec == 'S')
 		get_wstring(flags, ap);
 	else if (ft_strchr("xX", flags->spec))

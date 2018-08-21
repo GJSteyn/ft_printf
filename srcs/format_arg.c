@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 16:29:59 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/20 17:08:33 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 10:32:08 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void		format_arg(t_flags *flags)
 		format_hex(flags);
 	else if (ft_strchr("oO", flags->spec))
 		format_oct(flags);
+	else if (ft_strchr("fF", flags->spec))
+		format_float(flags);
 	else if (flags->spec == 'p')
 		format_point(flags);
 	else if (flags->spec == '%')

@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/18 16:53:20 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 07:56:37 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 09:13:44 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void		add_padding(t_flags *flags)
 	}
 }
 
-static void	add_prefix(t_flags *flags)
+static void		add_prefix(t_flags *flags)
 {
 	char		*tmp;
 
@@ -74,7 +74,7 @@ static void	add_prefix(t_flags *flags)
 	flags->hash = 0;
 }
 
-void		format_oct(t_flags *flags)
+void			format_oct(t_flags *flags)
 {
 	if (flags->precision && !flags->precision_len && !flags->arg)
 	{
@@ -88,7 +88,7 @@ void		format_oct(t_flags *flags)
 		add_prefix(flags);
 	if (flags->precision)
 		add_precision(flags);
-	if (flags->arg && flags->hash/* && !flags->zero*/)
+	if (flags->arg && flags->hash)
 		add_prefix(flags);
 	if (flags->width)
 		add_padding(flags);

@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 17:03:16 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/20 17:09:09 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 13:13:32 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,19 @@ static void		out_bytes(wchar_t wc, int len, char *out)
 	}
 }
 
-static void		get_out(wchar_t *wstr, char *out)
+static void		get_out(wchar_t *wstr, char *out, t_flags *flags)
 {
 	int			len;
+	int			total;
 
+	total = 0;
 	while (*wstr)
 	{
 		len = ft_wcharlen(*wstr);
+		total += len;
+		if (flags->precision)
+			if (total > flags->precision_len)
+				break;
 		out_bytes(*wstr, len, out);
 		out += len;
 		wstr++;
@@ -55,7 +61,7 @@ char			*wstr_to_str(t_flags *flags)
 	char		*out;
 
 	len = ft_wstrlen((wchar_t*)flags->arg);
-	out = ft_memalloc(len);
-	get_out((wchar_t*)flags->arg, out);
+	out = ft_memalloc(len + 1);
+	get_out((wchar_t*)flags->arg, out, flags);
 	return (out);
 }

@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 16:57:06 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/20 17:18:05 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 09:17:25 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		get_out(wchar_t wc, int len, char *out)
 	}
 }
 
-char		*wchar_to_str(t_flags *flags)
+char			*wchar_to_str(t_flags *flags)
 {
 	int			len;
 	char		*out;

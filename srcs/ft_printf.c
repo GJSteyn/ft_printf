@@ -6,14 +6,13 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 07:59:13 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 12:42:47 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
 #include <wchar.h>
-#include <unistd.h>
 
 size_t			print_arg(t_flags *flags, va_list ap)
 {
@@ -41,7 +40,7 @@ size_t			print_arg(t_flags *flags, va_list ap)
 	return (ret);
 }
 
-int			ft_printf(const char *fmt, ...)
+int				ft_printf(const char *fmt, ...)
 {
 	size_t			ret;
 	va_list			ap;
