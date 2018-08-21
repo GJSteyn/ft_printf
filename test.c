@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:23:43 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/18 20:05:11 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/21 05:34:47 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,20 +156,26 @@ int			main(void)
 	// printf("their[%hhd]\n", -129);
 	// ft_printf("minee[%hhd]\n", -129);
 
-	printf("their[%lld]\n", -9223372036854775808);
-	ft_printf("minee[%lld]\n", -9223372036854775808);
+	// printf("their[%lld]\n", -9223372036854775808);
+	// ft_printf("minee[%lld]\n", -9223372036854775808);
 
-	printf("their[%jd]\n", -9223372036854775808);
-	ft_printf("minee[%jd]\n", -9223372036854775808);
+	// printf("their[%jd]\n", -9223372036854775808);
+	// ft_printf("minee[%jd]\n", -9223372036854775808);
 
-	printf("their[%lu]\n", -42);
-	ft_printf("minee[%lu]\n", -42);
+	// printf("their[%lu]\n", -42);
+	// ft_printf("minee[%lu]\n", -42);
 
-	printf("their[%hU]\n", 4294967296);
-	ft_printf("minee[%hU]\n", 4294967296);
+	// printf("their[%hU]\n", 4294967296);
+	// ft_printf("minee[%hU]\n", 4294967296);
 
-	printf("their[%U]\n", 4294967296);
-	ft_printf("minee[%U]\n", 4294967296);
+	// printf("their[%U]\n", 4294967296);
+	// ft_printf("minee[%U]\n", 4294967296);
+
+	printf("their[%10C]\n", L'1');
+	ft_printf("minee[%10C]\n", L'1');
+	printf("---------------------\n");
+	printf("their[%-10S]\n", L"123©");
+	ft_printf("minee[%-10S]\n", L"123©");
 
 	return (0);
 }

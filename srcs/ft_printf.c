@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/19 17:38:21 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/20 17:18:26 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,6 @@
 #include <stdarg.h>
 #include <wchar.h>
 #include <unistd.h>
-
-void		format_empty(t_flags *flags)
-{
-	char			*tmp;
-	char			pad;
-
-	tmp = flags->out;
-	pad = ' ';
-	if (flags->zero)
-		pad = '0';
-	if (flags->width)
-	{
-		flags->out = ft_strnew(flags->width - 1);
-		ft_strfill(flags->out, pad, flags->width - 1);
-		ft_strdel(&tmp);
-	}
-}
-
-void		format_arg(t_flags *flags)
-{
-	if (!flags->spec)
-		format_empty(flags);
-	else if (flags->spec == 'c')
-		format_char(flags);
-	else if (ft_strchr("idD", flags->spec))
-		format_int(flags);
-	else if (ft_strchr("uU", flags->spec))
-		format_u_int(flags);
-	else if (ft_strchr("sS", flags->spec))
-		format_string(flags);
-	else if (ft_strchr("xX", flags->spec))
-		format_hex(flags);
-	else if (ft_strchr("oO", flags->spec))
-		format_oct(flags);
-	else if (flags->spec == 'p')
-		format_point(flags);
-	else if (flags->spec == '%')
-		format_percent(flags);
-}
-
-// size_t		putwide(t_flags *flags)
-// {
-
-// }
-
-void			normalize_arg(t_flags *flags)
-{
-	if (flags->spec == 'U')
-	{
-		flags->spec = 'u';
-		flags->len = ll;
-	}
-	else if (flags->spec == 'D')
-	{
-		flags->spec = 'd';
-		flags->len = ll;
-	}
-}
 
 size_t			print_arg(t_flags *flags, va_list ap)
 {
@@ -86,8 +28,6 @@ size_t			print_arg(t_flags *flags, va_list ap)
 	else
 		flags->out = ft_strnew(1);
 	format_arg(flags);
-	// if (ft_strchr("CS", flags->spec))
-	// 	ret = putwide(flags);
 	if (flags->spec == 'c' && !flags->arg)
 	{
 		ret = ft_putstr(flags->out) + 1;

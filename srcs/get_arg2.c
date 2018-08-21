@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsteyn <gsteyn@student.wethinkcode.co.z    +#+  +:+       +#+        */
+/*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:42:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/19 17:25:26 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/20 17:17:18 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void		get_percent(t_flags *flags)
 void		get_wchar(t_flags *flags, va_list ap)
 {
 	flags->arg = (long long)va_arg(ap, wchar_t);
+	flags->out = wchar_to_str(flags);
 }

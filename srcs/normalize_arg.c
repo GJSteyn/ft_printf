@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_arg3.c                                         :+:      :+:    :+:   */
+/*   normalize_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/19 17:34:10 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/20 17:03:06 by gsteyn           ###   ########.fr       */
+/*   Created: 2018/08/20 16:30:50 by gsteyn            #+#    #+#             */
+/*   Updated: 2018/08/20 16:31:04 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		get_wstring(t_flags *flags, va_list ap)
+void			normalize_arg(t_flags *flags)
 {
-	flags->arg = (long long)va_arg(ap, wchar_t *);
-	flags->out = wstr_to_str(flags);
+	if (flags->spec == 'U')
+	{
+		flags->spec = 'u';
+		flags->len = ll;
+	}
+	else if (flags->spec == 'D')
+	{
+		flags->spec = 'd';
+		flags->len = ll;
+	}
 }
