@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 17:03:16 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 13:13:32 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/24 07:45:14 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void		get_out(wchar_t *wstr, char *out, t_flags *flags)
 		total += len;
 		if (flags->precision)
 			if (total > flags->precision_len)
-				break;
+				break ;
 		out_bytes(*wstr, len, out);
 		out += len;
 		wstr++;
