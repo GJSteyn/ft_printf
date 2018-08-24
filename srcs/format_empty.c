@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 16:29:10 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/24 07:23:42 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/24 07:35:21 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void		add_padding(t_flags *flags)
 
 void			format_empty(t_flags *flags)
 {
-	flags->out[0] = (char)flags->arg;
+	if (ft_isdigit(flags->arg))
+		flags->out[0] = (char)flags->arg;
 	if (!flags->minus)
 		add_padding(flags);
 	if (flags->minus)
