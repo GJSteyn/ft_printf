@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 10:40:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 10:18:31 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/28 16:35:22 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void		get_arg(t_flags *flags, va_list ap)
 		get_point(flags, ap);
 	else if (flags->spec == '%')
 		get_percent(flags);
+	else if (flags->spec == 'n')
+		get_n(flags, ap);
 }
 
 void		get_char(t_flags *flags, va_list ap)

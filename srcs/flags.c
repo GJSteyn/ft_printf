@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 07:50:03 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 10:27:08 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/28 16:27:26 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void		init_flags(t_flags *flags)
 	flags->sign = none;
 	flags->spec = 0;
 	flags->out = NULL;
+	flags->ret = 0;
 }
 
 void		reset_flags(t_flags *flags)

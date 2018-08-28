@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:39 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/24 07:41:08 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/28 16:29:03 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,19 @@ size_t			print_arg(t_flags *flags, va_list ap)
 	return (ret);
 }
 
-int				print_format(char *cpy, va_list ap, t_flags *flags)
+void			print_format(char *cpy, va_list ap, t_flags *flags)
 {
-	size_t			ret;
 	char			*place;
 
-	ret = 0;
 	place = cpy;
 	while (*cpy)
 	{
 		if (*cpy == '%')
 		{
-			ret += cpy - place;
+			flags->ret += cpy - place;
 			ft_putnstr(place, cpy - place);
 			get_flags(&cpy, flags, ap);
-			ret += print_arg(flags, ap);
+			flags->ret += print_arg(flags, ap);
 			reset_flags(flags);
 			place = cpy;
 			continue ;
@@ -63,20 +61,18 @@ int				print_format(char *cpy, va_list ap, t_flags *flags)
 			cpy++;
 	}
 	reset_flags(flags);
-	ret += cpy - place;
+	flags->ret += cpy - place;
 	ft_putnstr(place, cpy - place);
-	return (ret);
 }
 
 int				ft_printf(const char *fmt, ...)
 {
-	size_t			ret;
 	va_list			ap;
 	t_flags			flags;
 
 	va_start(ap, fmt);
 	init_flags(&flags);
-	ret = print_format((char*)fmt, ap, &flags);
+	print_format((char*)fmt, ap, &flags);
 	va_end(ap);
-	return (ret);
+	return (flags.ret);
 }

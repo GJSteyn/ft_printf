@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 07:53:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 13:22:57 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/28 15:37:42 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		get_flags(char **fmt, t_flags *flags, va_list ap)
 	{
 		if (!**fmt)
 			return ;
-		if (ft_strchr("sSpdDioOuUxXcCfF%", **fmt))
+		if (ft_strchr("sSpdDioOuUxXcCfF%n", **fmt))
 		{
 			flags->spec = *((*fmt)++);
 			return ;

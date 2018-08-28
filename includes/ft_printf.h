@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:45:18 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 13:34:48 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/28 16:35:01 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct			s_flags
 	long long			arg;
 	double				darg;
 	char				*out;
+	size_t				ret;
 }						t_flags;
 
 int						ft_printf(const char *fmt, ...);
@@ -82,6 +83,7 @@ void					get_percent(t_flags *flags);
 void					get_wchar(t_flags *flags, va_list ap);
 void					get_wstring(t_flags *flags, va_list ap);
 void					get_float(t_flags *flags, va_list ap);
+void					get_n(t_flags *flags, va_list ap);
 
 void					normalize_arg(t_flags *flags);
 

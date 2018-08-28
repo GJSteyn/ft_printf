@@ -6,7 +6,7 @@
 /*   By: gsteyn <gsteyn@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 07:51:49 by gsteyn            #+#    #+#             */
-/*   Updated: 2018/08/21 10:15:25 by gsteyn           ###   ########.fr       */
+/*   Updated: 2018/08/28 15:37:05 by gsteyn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			is_valid(char c)
 {
-	if (ft_strchr("-+ #0.*sSpdDioOuUxXcCfF%hljz", c))
+	if (ft_strchr("-+ #0.*sSpdDioOuUxXcCfF%hljzn", c))
 		return (1);
 	else if (ft_isdigit(c))
 		return (1);
